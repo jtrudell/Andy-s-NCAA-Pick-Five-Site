@@ -1,0 +1,15 @@
+
+<h2>Andy's Pick Five</h2>
+
+<div id='picks-list'>
+  <% @picks.each do |pick| %>
+    <div class="single-pick">
+     <h3><a href="/picks/<%= pick.id%>"><%= pick.user.name %>'s Picks</a></h3>
+    <% pick.teams.each do |team| %>
+     <h4><%= team.name %>: <%= team.wins %> </h4>
+     <h4>Score: <%= pick.this_seaons_wins %></h4>
+    <% end %>
+
+    </div>
+  <% end %>
+</div>

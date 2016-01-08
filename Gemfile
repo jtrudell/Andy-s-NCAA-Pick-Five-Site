@@ -14,6 +14,8 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'ncaa_scrape'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'

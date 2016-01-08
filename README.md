@@ -1,3 +1,3 @@
 ### NCAA Pick Five
 
-Sinatra app using Ruby and JS.
+In progress. Sinatra app using Ruby and JS.

@@ -1,4 +1,5 @@
-
 get '/' do
-  redirect '/picks'
+  @users = User.all
+  @standings = User.standings
+  erb :"index"
 end

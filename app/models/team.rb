@@ -1,3 +1,4 @@
 class Team < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :picks
+  has_many :users, through: :picks
 end

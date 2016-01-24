@@ -15,6 +15,7 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'ncaa_scrape'
+gem 'nokogiri'
 
 group :test do
   gem 'shoulda-matchers'

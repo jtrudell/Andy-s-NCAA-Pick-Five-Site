@@ -89,6 +89,7 @@ DEPENDENCIES
   factory_girl
   faker
   ncaa_scrape
+  nokogiri
   pg
   rack-test
   rake

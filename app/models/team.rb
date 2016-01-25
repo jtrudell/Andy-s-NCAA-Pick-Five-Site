@@ -7,8 +7,6 @@ class Team < ActiveRecord::Base
   def self.update_wins
     scrape = NCAABasketball.new
     teams = Team.all
-    teams.each do |team|
-      team.update(wins: scrape.team_wins(team.name))
-    end
+    teams.each { |team| team.update(wins: scrape.team_wins(team.name)) }
   end
 end

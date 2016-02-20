@@ -14,7 +14,7 @@ gem 'rake'
 
 gem 'shotgun'
 
-gem 'ncaa_scrape'
+gem 'ncaa_scrape', '~>0.1.2'
 gem 'nokogiri'
 
 group :test do

@@ -1,38 +1,46 @@
-<div class="container">
-  <h2 class="center">NCAA Pick Five Challenge 2015/2016</h2>
-  <div class="row">
-
-    <div class="col s6">
-      <ul class="collection with-header">
-        <li class="collection-header teal"><h4>Teams</h4></li>
-      </ul>
-      <% @users.each do |user| %>
-        <ul class="collapsible" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header text-justify"><h5><%= user.name %> | <%= user.wins %> wins<i class="material-icons">subject</i></h5>
-            </div>
-            <div class="collapsible-body">
-              <ul class="collection">
-                <%  user.teams.each do |team| %>
-                  <li class="collection-item"><%= user.teams.index(team) + 1 %>. <%= team.name %> (Wins: <%= team.wins %>)</li>
-                <% end %>
-                <li class="collection-item">Total Wins: <%= user.wins %> </li>
-              </ul>
-            </div>
-        </li>
-      </ul>
-
-      <% end %>
-    </div>
-
-    <div class="col s6">
-      <ul class="collection with-header">
-        <li class="collection-header teal"><h4>Standings</h4></li>
-        <% @standings.each do |user| %>
-          <li class="collection-item"><h5><%= @standings.index(user) + 1 %>.  <%= user.name %> (wins: <%= user.wins %>) </h5></li>
+  <div class="container">
+    <h2 class="center">NCAA Pick Five Challenge 2015/2016</h2>
+    <div class="row">
+      <div class="col s6">
+        <ul class="collection with-header">
+          <li class="collection-header teal">
+            <h4>Teams</h4>
+          </li>
+        </ul>
+        <% @users.each do |user| %>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header text-justify">
+                <h5><%= user.name %> | <%= user.wins %> wins<i class="material-icons">subject</i></h5>
+              </div>
+              <div class="collapsible-body">
+                <ul class="collection">
+                  <%  user.teams.each do |team| %>
+                    <li class="collection-item">
+                      <%= user.teams.index(team) + 1 %>. <%= team.name %> (Wins: <%= team.wins %>)
+                    </li>
+                  <% end %>
+                  <li class="collection-item">
+                    Total Wins: <%= user.wins %>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         <% end %>
-      </ul>
-    </div>
+      </div>
 
+      <div class="col s6">
+        <ul class="collection with-header">
+          <li class="collection-header teal">
+            <h4>Standings</h4>
+          </li>
+          <% @standings.each do |user| %>
+            <li class="collection-item">
+              <h5><%= @standings.index(user) + 1 %>.  <%= user.name %> (wins: <%= user.wins %>)</h5>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>

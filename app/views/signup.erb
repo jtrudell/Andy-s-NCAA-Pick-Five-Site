@@ -1,0 +1,41 @@
+  <div class="container">
+    <div class="headline"></div>
+    <div class="row">
+      <div class="col s12">
+        <ul class="collection with-header">
+          <li class="collection-header center orange darken-2">
+            <h4>Signup</h4>
+          </li>
+        </ul>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s5">
+                <input placeholder="your first name and first letter of last name" id="name" type="text" class="validate">
+                <label for="name">First Name and Initial:</label>
+              </div>
+            </div>
+            <div class="row">
+              <p>Select 5 teams. No one can have the same 5 teams as anyone else; as you select teams, any teams that are unavailable for you will be crossed out.</p>
+              <div class="col s6">
+                <% @team_list[:first_half].each do |team| %>
+                  <p>
+                    <input type="checkbox" class="filled-in" id=<%= team.id %> />
+                    <label for=<%= team.id %>><%= team.name %></label>
+                  </p>
+                <% end %>
+              </div>
+              <div class="col s6">
+                <% @team_list[:second_half].each do |team| %>
+                  <p>
+                    <input type="checkbox" class="filled-in" id=<%= team.id %> />
+                    <label for=<%= team.id %>><%= team.name %></label>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

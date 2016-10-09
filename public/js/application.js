@@ -5,7 +5,7 @@ var Headline = React.createClass({
 
   render: function render() {
     // to come: startYear will be generated when new season begins
-    var startYear = 2015;
+    var startYear = 2016;
     var endYear = startYear + 1;
 
     return React.createElement(

@@ -5,6 +5,12 @@ body {
 	color: #424242;
 }
 
+label {
+  font-size: 1.2em !important;
+	color: #424242 !important;
+  margin-top: 10px;
+}
+
 .container {
 	width: 85%;
 	margin-top: 5%;

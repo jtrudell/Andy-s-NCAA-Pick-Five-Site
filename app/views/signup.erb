@@ -8,28 +8,30 @@
           </li>
         </ul>
         <div class="row">
-          <form class="col s12">
+          <form class="col s12" action="/signup" method="POST">
             <div class="row">
               <div class="input-field col s5">
-                <input placeholder="your first name and first letter of last name" id="name" type="text" class="validate">
+                <input placeholder="your first name and first letter of last name" id="name" type="text" class="validate" name="user">
                 <label for="name">First Name and Initial:</label>
               </div>
             </div>
             <div class="row">
               <p>Select 5 teams. No one can have the same 5 teams as anyone else; as you select teams, any teams that are unavailable for you will be crossed out.</p>
               <div class="col s6">
+                <p>Team Name (2015/16 Wins)</p>
                 <% @team_list[:first_half].each do |team| %>
                   <p>
-                    <input type="checkbox" class="filled-in" id=<%= team.id %> />
-                    <label for=<%= team.id %>><%= team.name %></label>
+                    <input type="checkbox" class="filled-in" id=<%= team.id %> name=<%= team.name %> value=<%= team.id %> />
+                    <label for=<%= team.id %>><%= team.name %> (<%= team.wins %>)</label>
                   </p>
                 <% end %>
               </div>
               <div class="col s6">
+                <p>Team Name (2015/16 Wins)</p>
                 <% @team_list[:second_half].each do |team| %>
                   <p>
-                    <input type="checkbox" class="filled-in" id=<%= team.id %> />
-                    <label for=<%= team.id %>><%= team.name %></label>
+                    <input type="checkbox" class="filled-in" id=<%= team.id %> name=<%= team.name %> value=<%= team.id %> />
+                    <label for=<%= team.id %>><%= team.name %> (<%= team.wins %>)</label>
                   </p>
                 <% end %>
               </div>

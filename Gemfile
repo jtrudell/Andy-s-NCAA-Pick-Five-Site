@@ -7,6 +7,8 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
+gem 'rack-flash3'
+
 gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
 

@@ -16,18 +16,27 @@ end
 
 post '/picks/:year' do
   @year = params[:year]
+  @user = User.new(name: params['name'])
   teams = params['teams']
   if teams.nil? || teams.count != 5
     flash[:notice] = "You selected #{teams.count} teams: #{teams.keys}. You must pick 5 teams."
     redirect "/picks/#{@year}"
   end
-  @user = User.new(name: params['name'])
   @picks = Pick.generate(@user, teams)
   if @user.save
-    erb :"picks"
+    redirect "/users/#{@user.id}/picks"
   else
     flash[:notice] = "User name #{params['name']} exists. Try another name."
     redirect "/picks/#{@year}"
   end
 end
 
+get '/users/:id/picks' do
+  @user = User.find(params[:id])
+  if @user.present?
+    @picks = @user.picks
+    erb :"picks"
+  else
+    redirect '/'
+  end
+end

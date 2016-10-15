@@ -1,10 +1,14 @@
-before '/' do
+before '/2016' do
   Team.update_wins
   @users = User.all.sort { |x, y| x.name <=> y.name }
   @standings = User.standings
 end
 
 get '/' do
+  redirect '/2016'
+end
+
+get '/2016' do
   erb :"index"
 end
 

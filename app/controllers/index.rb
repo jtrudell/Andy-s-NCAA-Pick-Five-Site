@@ -8,19 +8,26 @@ get '/' do
   erb :"index"
 end
 
-get '/signup/new' do
+get '/picks/:year' do
+  @year = params[:year]
   @team_list = Team.two_columns
   erb :"signup"
 end
 
-post '/signup/:year' do
+post '/picks/:year' do
+  @year = params[:year]
+  teams = params['teams']
+  if teams.nil? || teams.count != 5
+    flash[:notice] = "You selected #{teams.count} teams: #{teams.keys}. You must pick 5 teams."
+    redirect "/picks/#{@year}"
+  end
   @user = User.new(name: params['name'])
+  @picks = Pick.generate(@user, teams)
   if @user.save
-    @picks = Pick.generate(@user, params['teams'])
     erb :"picks"
   else
-    flash[:notice] = "something when wrong! #{params}"
-    redirect '/signup/new'
+    flash[:notice] = "User name #{params['name']} exists. Try another name."
+    redirect "/picks/#{@year}"
   end
 end
 

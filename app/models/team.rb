@@ -9,15 +9,8 @@ class Team < ActiveRecord::Base
 
   def self.update_wins(year)
     teams = Team.where(year: year)
-    current_year = Time.now.year
-    if year == current_year && Time.now < Time.new(year, 11)
-      teams.each { |team| team.update(wins: 0) }
-    elsif year == current_year || year == current_year - 1
-      scrape = NCAABasketball.new
-      teams.each { |team| team.update(wins: scrape.team_wins(team.name)) }
-    else
-      teams
-    end
+    scrape = NCAABasketball.new
+    teams.map { |team| team.update(wins: scrape.team_wins(team.name)) }
   end
 
   def self.two_columns(year)

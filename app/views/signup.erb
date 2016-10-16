@@ -25,7 +25,7 @@
                 <% @team_list[:first_half].each do |team| %>
                   <p>
                     <input type="checkbox" class="filled-in" id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %> />
-                    <label for=<%= team.id %>><%= team.name %> (<%= team.wins %>)</label>
+                    <label for=<%= team.id %>><%= team.name %> (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</label>
                   </p>
                 <% end %>
               </div>
@@ -34,7 +34,7 @@
                 <% @team_list[:second_half].each do |team| %>
                   <p>
                     <input type="checkbox" class="filled-in" id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %> />
-                    <label for=<%= team.id %>><%= team.name %> (<%= team.wins %>)</label>
+                    <label for=<%= team.id %>><%= team.name %> (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</label>
                   </p>
                 <% end %>
               </div>

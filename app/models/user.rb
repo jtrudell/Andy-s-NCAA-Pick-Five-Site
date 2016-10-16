@@ -3,14 +3,16 @@ require 'ncaa_scrape'
 class User < ActiveRecord::Base
   has_many :picks
   has_many :teams, through: :picks
-  validates :name, presence: true, uniqueness: true
+  validates :year, presence: true
+  validates :name, presence: true
+  validates_uniqueness_of :name, scope: :year
 
   def wins
     self.teams.inject(0) { |total, team| total + team.wins }
   end
 
-  def self.standings
-    @users = User.all
+  def self.standings(year)
+    @users = User.where(year: year)
     @users.sort { |x, y| y.wins <=> x.wins }
   end
 end

@@ -6,33 +6,35 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# SEEDS FOR 2015/2016 SEASON BASED ON ANDY'S SPREADSHEET
 require 'ncaa_scrape'
 
 scrape = NCAABasketball.new
 
 scrape.team_names.each do |team|
-  Team.create(name: team, wins: scrape.team_wins(team))
+  Team.create(name: team, wins: scrape.team_wins(team), year: 2015)
+  Team.create(name: team, wins: 0, year: 2016) # in anticipation of 2016 season
 end
 
 users = User.create([
-  {name: 'Andy B'},
-  {name: 'Mark N'},
-  {name: 'Jason C'},
-  {name: 'Kevin C'},
-  {name: 'Rob S'},
-  {name: 'Brian C'},
-  {name: 'Drew K'},
-  {name: 'Matt J'},
-  {name: 'Mitch M'},
-  {name: 'Joe M'},
-  {name: 'Jeremy N'},
-  {name: 'Sean B'},
-  {name: 'Adam R'},
-  {name: 'Matt M'},
-  {name: 'Mark K'},
-  {name: 'Mark Double K'},
-  {name: 'Matt W'},
-  {name: 'Kevin B'}
+  {name: 'Andy B', year: 2015},
+  {name: 'Mark N', year: 2015},
+  {name: 'Jason C', year: 2015},
+  {name: 'Kevin C', year: 2015},
+  {name: 'Rob S', year: 2015},
+  {name: 'Brian C', year: 2015},
+  {name: 'Drew K', year: 2015},
+  {name: 'Matt J', year: 2015},
+  {name: 'Mitch M', year: 2015},
+  {name: 'Joe M', year: 2015},
+  {name: 'Jeremy N', year: 2015},
+  {name: 'Sean B', year: 2015},
+  {name: 'Adam R', year: 2015},
+  {name: 'Matt M', year: 2015},
+  {name: 'Mark K', year: 2015},
+  {name: 'Mark Double K', year: 2015},
+  {name: 'Matt W', year: 2015},
+  {name: 'Kevin B', year: 2015}
   ])
 
 Pick.create([

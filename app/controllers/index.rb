@@ -9,10 +9,10 @@ before '/2016' do
 end
 
 get '/:year' do
-  year = params[:year].to_i
-  redirect '/' if Time.now.year < year
-  @users = User.where(year: year).order('name')
-  @standings = User.standings(year)
+  @year = params[:year].to_i
+  redirect '/' if Time.now.year < @year
+  @users = User.where(year: @year).order('name')
+  @standings = User.standings(@year)
   erb :"index"
 end
 

@@ -20,10 +20,4 @@ class Team < ActiveRecord::Base
       second_half: teams[teams.count/2..-1]
     }
   end
-
-  def previous_season_wins(current_year)
-    team = Team.where(year: current_year.to_i - 1, name: name)
-    team.present? ? team.wins : 'N/A'
-  end
-
 end

@@ -13,6 +13,7 @@ get '/:year' do
   redirect '/' if Time.now.year < @year
   @users = User.where(year: @year).order('name')
   @standings = User.standings(@year)
+  @previous_year_teams = Team.where(year: @year - 1)
   erb :"index"
 end
 

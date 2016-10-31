@@ -41,7 +41,7 @@ post '/picks/:year' do
     redirect "/picks/#{year}"
   end
   @picks = Pick.generate(@user, teams)
-  if user.errors[:base].any?
+  if @user.errors[:base].any?
     flash[:notice] = @user.errors[:base].first
     redirect "/picks/#{year}"
   end

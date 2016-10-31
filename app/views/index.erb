@@ -20,7 +20,7 @@
                 <ul class="collection">
                   <%  user.teams.each do |team| %>
                     <li class="collection-item">
-                      <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2016/2017 Wins: <%= team.wins %> | 2015/2016 Wins: <%= @previous_year_teams.find_by(name: team.name).wins || 0 %>
+                      <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2016/2017 Wins: <%= team.wins %> | 2015/2016 Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year).wins || 0 %>
                     </li>
                   <% end %>
                   <li class="collection-item orange darken-2">

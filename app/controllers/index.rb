@@ -27,19 +27,26 @@ end
 
 post '/picks/:year' do
   year = params[:year].to_i
-  @user = User.new(name: params['name'], year: year)
-  teams = [params['pickone'], params['picktwo'], params['pickthree'], params['pickfour'], params['pickfive']]
-  teams = nil if teams.any? { |team| team.nil? }
-  if !@user.save
-    flash[:notice] = "User name #{params['name']} exists. Try another name."
-    redirect "/picks/#{year}"
-  elsif teams.nil? || teams.count != 5
-    flash[:notice] = "You selected #{teams.count} teams: #{teams.keys}. You must pick 5 teams."
+  @user = User.new(name: params['name'].titleize, year: year)
+  teams = [
+            params['pickone'],
+            params['picktwo'],
+            params['pickthree'],
+            params['pickfour'],
+            params['pickfive']
+          ]
+  teams.select! { |team| team != "" }
+  if teams.count != 5
+    flash[:notice] = "You selected #{teams.count} teams. You must pick 5 teams."
     redirect "/picks/#{year}"
   end
   @picks = Pick.generate(@user, teams)
-  if @user.errors[:base].any?
-    flash[:notice] = @user.errors[:base]
+  if user.errors[:base].any?
+    flash[:notice] = @user.errors[:base].first
+    redirect "/picks/#{year}"
+  end
+  if !@user.save
+    flash[:notice] = 'Username is taken.'
     redirect "/picks/#{year}"
   end
   redirect "/#{year}"

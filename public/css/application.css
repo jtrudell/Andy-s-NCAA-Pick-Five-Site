@@ -6,9 +6,12 @@ body {
 }
 
 label {
-  font-size: 1.2em !important;
-	color: #424242 !important;
-  margin-top: 10px;
+  font-size: 1em !important;
+  font-weight: bold;
+}
+
+input.select-dropdown {
+  color: #2bbbad;
 }
 
 .container {

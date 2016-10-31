@@ -18,7 +18,7 @@
             <select name="pickone" form="signupform">
               <option value='' class="disabled"></option>
               <% @teams.each do |team| %>
-                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: <%= @previous_year_teams.find_by(name: team.name).wins || 0 %></option>
               <% end %>
             </select>
             <label>Pick One</label>
@@ -27,7 +27,7 @@
             <select name="picktwo" form="signupform">
               <option value='' class="disabled"></option>
               <% @teams.each do |team| %>
-                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: <%= @previous_year_teams.find_by(name: team.name).wins || 0 %></option>
               <% end %>
             </select>
             <label>Pick Two</label>
@@ -36,7 +36,7 @@
             <select name="pickthree" form="signupform">
               <option value='' class="disabled"></option>
               <% @teams.each do |team| %>
-                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: <%= @previous_year_teams.find_by(name: team.name).wins || 0 %></option>
               <% end %>
             </select>
             <label>Pick Three</label>
@@ -45,7 +45,7 @@
             <select name="pickfour" form="signupform">
               <option value='' class="disabled"></option>
               <% @teams.each do |team| %>
-                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: <%= @previous_year_teams.find_by(name: team.name).wins || 0 %></option>
               <% end %>
             </select>
             <label>Pick Four</label>
@@ -54,7 +54,7 @@
             <select name="pickfive" form="signupform">
               <option value='' class="disabled"></option>
               <% @teams.each do |team| %>
-                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: <%= @previous_year_teams.find_by(name: team.name).wins || 0 %></option>
               <% end %>
             </select>
             <label>Pick Five</label>

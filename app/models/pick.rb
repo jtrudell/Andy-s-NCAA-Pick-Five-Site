@@ -6,12 +6,10 @@ class Pick < ActiveRecord::Base
   def self.generate(user, teams)
     team_ids = teams.sort.join(',')
     if User.where(team_choices: team_ids).any?
-      user.errors[:base] << 'Someone else already picked those 5 times. Please try again, picking at least one different team.'
-      false
+      user.errors[:base] << 'Someone else already picked those five teams. Please try again, picking at least one different team.'
     else
       user.team_choices = team_ids
       teams.each { |team| user.picks.build(team_id: team.to_i) }
-      user.save
     end
   end
 end

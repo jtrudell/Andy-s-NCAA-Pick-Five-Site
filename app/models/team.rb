@@ -12,12 +12,4 @@ class Team < ActiveRecord::Base
     scrape = NCAABasketball.new
     teams.map { |team| team.update(wins: scrape.team_wins(team.name)) }
   end
-
-  def self.two_columns(year)
-    teams = Team.where(year: year).order('name')
-    {
-      first_half: teams[0...teams.count/2],
-      second_half: teams[teams.count/2..-1]
-    }
-  end
 end

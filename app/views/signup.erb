@@ -11,7 +11,57 @@
           </li>
         </ul>
         <div class="row">
-          <form class="col s12" action="/picks/2016" method="POST">
+          <h5>Select five teams below, one from each dropdown. Your picks cannot be identical to the picks of anyone who has already signed up.</h5>
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <select name="pickone" form="signupform">
+              <option value='' class="disabled"></option>
+              <% @teams.each do |team| %>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+              <% end %>
+            </select>
+            <label>Pick One</label>
+          </div>
+          <div class="input-field col s4">
+            <select name="picktwo" form="signupform">
+              <option value='' class="disabled"></option>
+              <% @teams.each do |team| %>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+              <% end %>
+            </select>
+            <label>Pick Two</label>
+          </div>
+          <div class="input-field col s4">
+            <select name="pickthree" form="signupform">
+              <option value='' class="disabled"></option>
+              <% @teams.each do |team| %>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+              <% end %>
+            </select>
+            <label>Pick Three</label>
+          </div>
+          <div class="input-field col s4">
+            <select name="pickfour" form="signupform">
+              <option value='' class="disabled"></option>
+              <% @teams.each do |team| %>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+              <% end %>
+            </select>
+            <label>Pick Four</label>
+          </div>
+          <div class="input-field col s4">
+            <select name="pickfive" form="signupform">
+              <option value='' class="disabled"></option>
+              <% @teams.each do |team| %>
+                <option id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %>><%= team.name %> | 2015/16 Wins: (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</option>
+              <% end %>
+            </select>
+            <label>Pick Five</label>
+          </div>
+        </div>
+        <div class="row">
+          <form class="col s12" action="/picks/2016" id="signupform" method="POST">
             <div class="row">
               <div class="input-field col s5">
                 <input placeholder="your first name and first letter of last name" id="name" type="text" class="validate" name="name">
@@ -19,25 +69,6 @@
               </div>
             </div>
             <div class="row">
-              <p>Select 5 teams. No one can have the same 5 teams as anyone else; as you select teams, any teams that are unavailable for you will be crossed out.</p>
-              <div class="col s6">
-                <p>Team Name (2015/16 Wins)</p>
-                <% @team_list[:first_half].each do |team| %>
-                  <p>
-                    <input type="checkbox" class="filled-in" id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %> />
-                    <label for=<%= team.id %>><%= team.name %> (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</label>
-                  </p>
-                <% end %>
-              </div>
-              <div class="col s6">
-                <p>Team Name (2015/16 Wins)</p>
-                <% @team_list[:second_half].each do |team| %>
-                  <p>
-                    <input type="checkbox" class="filled-in" id=<%= team.id %> name=teams[<%= team.name %>] value=<%= team.id %> />
-                    <label for=<%= team.id %>><%= team.name %> (<%= @previous_year_teams.find_by(name: team.name).wins || 0 %>)</label>
-                  </p>
-                <% end %>
-              </div>
               <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
             </div>
           </form>

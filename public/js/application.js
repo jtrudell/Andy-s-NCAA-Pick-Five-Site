@@ -1,5 +1,16 @@
 'use strict';
 
+// materialize
+$(document).ready(function(){
+  $('.collapsible').collapsible({
+    accordion : true
+  });
+});
+
+$(document).ready(function() {
+  $('select').material_select();
+});
+
 // title
 var yearParam = window.location.pathname.split('/').pop();
 var startYear = function() {
@@ -34,9 +45,4 @@ ReactDOM.render(
   document.querySelector('.headline')
 );
 
-// materialize
-$(document).ready(function(){
-  $('.collapsible').collapsible({
-    accordion : true
-  });
-});
+

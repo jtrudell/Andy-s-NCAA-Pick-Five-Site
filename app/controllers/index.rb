@@ -20,7 +20,7 @@ end
 get '/picks/:year' do
   year = params[:year].to_i
   redirect '/' if Time.now.year != year
-  @team_list = Team.two_columns(year)
+  @teams = Team.where(year: year).order('name')
   @previous_year_teams = Team.where(year: year - 1)
   erb :"signup"
 end
@@ -28,27 +28,19 @@ end
 post '/picks/:year' do
   year = params[:year].to_i
   @user = User.new(name: params['name'], year: year)
-  teams = params['teams']
-  if teams.nil? || teams.count != 5
+  teams = [params['pickone'], params['picktwo'], params['pickthree'], params['pickfour'], params['pickfive']]
+  teams = nil if teams.any? { |team| team.nil? }
+  if !@user.save
+    flash[:notice] = "User name #{params['name']} exists. Try another name."
+    redirect "/picks/#{year}"
+  elsif teams.nil? || teams.count != 5
     flash[:notice] = "You selected #{teams.count} teams: #{teams.keys}. You must pick 5 teams."
     redirect "/picks/#{year}"
   end
   @picks = Pick.generate(@user, teams)
-  if @user.save
-    redirect "/users/#{@user.id}/picks/#{year}"
-  else
-    flash[:notice] = "User name #{params['name']} exists. Try another name."
+  if @user.errors[:base].any?
+    flash[:notice] = @user.errors[:base]
     redirect "/picks/#{year}"
   end
-end
-
-get '/users/:id/picks/:year' do
-  redirect '/' if Time.now.year != params[:year]
-  @user = User.find(params[:id])
-  if @user.present?
-    @picks = @user.picks
-    erb :"picks"
-  else
-    redirect '/'
-  end
+  redirect "/#{year}"
 end

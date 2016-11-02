@@ -40,7 +40,7 @@ post '/picks/:year' do
     flash[:notice] = "You selected #{teams.count} teams. You must pick 5 teams."
     redirect "/picks/#{year}"
   end
-  @picks = Pick.generate(@user, teams)
+  @picks = Pick.generate(@user, teams, year)
   if @user.errors[:base].any?
     flash[:notice] = @user.errors[:base].first
     redirect "/picks/#{year}"

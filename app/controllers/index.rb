@@ -3,9 +3,17 @@ get '/' do
 end
 
 before '/2016' do
-  Team.update_wins(2016) if Time.now > Time.new(2016, 11, 5)
+  Team.clear_wins(2016)
+  Team.update_wins(2016) if Date.today > Date.new(2016, 11, 10)
   @users = User.where(year: 2016).order('name')
   @standings = User.standings(2016)
+end
+
+get '/2015' do
+  @year = 2015
+  @users = User.where(year: @year).order('name')
+  @standings = User.standings(@year)
+  erb :"index"
 end
 
 get '/:year' do

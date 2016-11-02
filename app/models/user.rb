@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name, scope: :year, message: 'That name has already been taken.'
 
   def wins
-    self.teams.inject(0) { |total, team| total + (team.wins || 0 )}
+    self.teams.inject(0) { |total, team| total + team.wins }
   end
 
   def self.standings(year)

@@ -14,20 +14,30 @@
           <ul class="collapsible" data-collapsible="accordion">
             <li>
               <div class="collapsible-header text-justify">
-                <h5><%= user.name %> | <%= user.wins || 0 %> wins<i class="material-icons menu-icon">list</i></h5>
+                <% if @year == 2015 %>
+                  <h5><%= user.name %> | <%= user.wins || 0 %> wins<i class="material-icons menu-icon">list</i></h5>
+                <% else %>
+                  <h5><%= user.name %> | 2015 Total: <%= Pick.previous_season_total_wins(user.teams, @year) %> <i class="material-icons menu-icon">list</i></h5>
+                <% end %>
               </div>
+              <% if Date.today > Date.new(@year,11,15) %>
               <div class="collapsible-body">
                 <ul class="collection">
                   <%  user.teams.each do |team| %>
                     <li class="collection-item">
-                      <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2016/2017 Wins: <%= team.wins || 0 %> | 2015/2016 Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year).wins || 0 %>
+                      <% if @year == 2015 %>
+                        <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2015/2016 Wins: <%= team.wins %>
+                      <% else %>
+                        <%= user.teams.index(team) + 1 %>. <%= team.name %> | <%= @year %>/<%= @year + 1 %> Wins: <%= team.wins %> | <%= @year - 1 %>/<%= @year %> Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year).wins %>
+                      <% end %>
                     </li>
                   <% end %>
                   <li class="collection-item orange darken-2">
-                    Total Wins: <%= user.wins || 0 %>
+                    Total Wins: <%= user.wins %>
                   </li>
                 </ul>
               </div>
+              <% end %>
             </li>
           </ul>
         <% end %>

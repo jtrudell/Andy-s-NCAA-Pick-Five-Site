@@ -21,10 +21,6 @@ class Pick < ActiveRecord::Base
       team = Team.find(team_id)
       old_teams << Team.find_by(year: year - 1, name: team.name)
     end
-    puts '*******************'
-    puts old_teams
-    puts '*******************'
-    puts teams
-    old_teams.inject(0) { |total, team| total + (team.wins || 0) }
+    old_teams.inject(0) { |total, team| total + team.wins }
   end
 end

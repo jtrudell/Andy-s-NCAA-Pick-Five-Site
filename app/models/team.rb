@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name, scope: :year
 
+  attr_reader :wins
+
   def self.update_wins(year)
     teams = Team.where(year: year)
     scrape = NCAABasketball.new

@@ -14,17 +14,17 @@
           <ul class="collapsible" data-collapsible="accordion">
             <li>
               <div class="collapsible-header text-justify">
-                <h5><%= user.name %> | <%= user.wins %> wins<i class="material-icons menu-icon">list</i></h5>
+                <h5><%= user.name %> | <%= user.wins || 0 %> wins<i class="material-icons menu-icon">list</i></h5>
               </div>
               <div class="collapsible-body">
                 <ul class="collection">
                   <%  user.teams.each do |team| %>
                     <li class="collection-item">
-                      <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2016/2017 Wins: <%= team.wins %> | 2015/2016 Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year).wins || 0 %>
+                      <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2016/2017 Wins: <%= team.wins || 0 %> | 2015/2016 Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year).wins || 0 %>
                     </li>
                   <% end %>
                   <li class="collection-item orange darken-2">
-                    Total Wins: <%= user.wins %>
+                    Total Wins: <%= user.wins || 0 %>
                   </li>
                 </ul>
               </div>
@@ -40,7 +40,7 @@
           </li>
           <% @standings.each do |user| %>
             <li class="collection-item">
-              <h5><%= @standings.index(user) + 1 %>.  <%= user.name %> (wins: <%= user.wins %>)</h5>
+              <h5><%= @standings.index(user) + 1 %>.  <%= user.name %> (wins: <%= user.wins || 0 %>)</h5>
             </li>
           <% end %>
         </ul>

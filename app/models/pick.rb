@@ -15,12 +15,16 @@ class Pick < ActiveRecord::Base
     end
   end
 
-  def previous_season_total_wins(teams, year)
+  def self.previous_season_total_wins(teams, year)
     old_teams = []
     teams.map do |team_id|
       team = Team.find(team_id)
-      old_teams << Team.where(year: year - 1, name: team.name)
+      old_teams << Team.find_by(year: year - 1, name: team.name)
     end
-    old_teams.inject(0) { |total, team| total + team.wins }
+    puts '*******************'
+    puts old_teams
+    puts '*******************'
+    puts teams
+    old_teams.inject(0) { |total, team| total + (team.wins || 0) }
   end
 end

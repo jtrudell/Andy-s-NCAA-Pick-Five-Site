@@ -26,6 +26,7 @@ get '/:year' do
 end
 
 get '/picks/:year' do
+  redirect '/' # until next year
   year = params[:year].to_i
   redirect '/' if Time.now.year != year
   @teams = Team.where(year: year).order('name')
@@ -34,6 +35,7 @@ get '/picks/:year' do
 end
 
 post '/picks/:year' do
+  redirect '/' # until next year
   year = params[:year].to_i
   @user = User.new(name: params['name'].titleize, year: year)
   teams = [

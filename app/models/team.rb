@@ -10,14 +10,12 @@ class Team < ActiveRecord::Base
   before_create :zero_wins
 
   def self.update_wins(year)
-    teams = Team.where(year: year)
     scrape = NCAABasketball.new
-    teams.map { |team| team.update(wins: scrape.team_wins(team.name)) }
+    Team.where(year: year).map { |team| team.update(wins: scrape.team_wins(team.name)) }
   end
 
   def self.clear_wins(year)
-    teams = Team.where(year: year)
-    teams.map { |team| team.update(wins: 0) }
+    Team.where(year: year).map { |team| team.update(wins: 0) }
   end
 
   private

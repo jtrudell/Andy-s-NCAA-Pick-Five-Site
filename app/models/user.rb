@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   end
 
   def self.standings(year)
-    @users = User.where(year: year)
-    @users.sort { |x, y| y.wins(year) <=> x.wins(year) }
+    User.where(year: year).sort_by { |user| user.wins(year) }.reverse
   end
 end

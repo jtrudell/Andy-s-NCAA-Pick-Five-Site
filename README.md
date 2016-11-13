@@ -1,6 +1,6 @@
 ## NCAA Pick Five
 
-In progress. Sinatra app using Ruby and JS.
+For Andy, whose impressive Google spreadsheet inspired this site. Sinatra, Ruby, Materialize and a bit of React.
 
 ### Getting Started
 0. bundle install

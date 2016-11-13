@@ -24,7 +24,7 @@
                       <% if @year == 2015 %>
                         <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2015/2016 Wins: <%= team.wins %>
                       <% else %>
-                        <%= user.teams.index(team) + 1 %>. <%= team.name %> | <%= @year %>/<%= @year + 1 %> Wins: <%= team.wins %> | <%= @year - 1 %>/<%= @year %> Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year).wins %>
+                        <%= user.teams.index(team) + 1 %>. <%= team.name %> | <%= @year %>/<%= @year + 1 %> Wins: TBD | <%= @year - 1 %>/<%= @year %> Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year - 1).wins %>
                       <% end %>
                     </li>
                   <% end %>
@@ -45,7 +45,7 @@
           </li>
           <% @standings.each do |user| %>
             <li class="collection-item">
-              <h5><%= @standings.index(user) + 1 %>.  <%= user.name %> (wins: <%= user.wins || 0 %>)</h5>
+              <h5><%= @standings.index(user) + 1 %>.  <%= user.name %> (wins: TBD)</h5>
             </li>
           <% end %>
         </ul>

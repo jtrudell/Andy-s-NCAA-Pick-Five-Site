@@ -3,8 +3,8 @@ get '/' do
 end
 
 before '/2016' do
-  Team.clear_wins(2016)
-  Team.update_wins(2016) if Date.today > Date.new(2016, 11, 10)
+  # Team.clear_wins(2016)
+  Team.update_wins(2016)# if Date.today > Date.new(2016, 11, 10)
   @users = User.where(year: 2016).order('name')
   @standings = User.standings(2016)
 end

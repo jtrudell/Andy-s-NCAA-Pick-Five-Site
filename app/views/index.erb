@@ -1,6 +1,9 @@
   <div class="container">
     <div class="headline"></div>
     <div class="row">
+      <div class="col s8">NOTE: Wins TBD until NCAA updates <a href="http://www.ncaa.com/rankings/basketball-men/d1">its rankings page</a> for 2016/2017 season.</div>
+    </div>
+    <div class="row">
       <div class="col s6">
         <ul class="collection with-header">
           <li class="collection-header center orange darken-2">
@@ -12,7 +15,7 @@
             <li>
               <div class="collapsible-header text-justify">
                 <% if @year == 2015 %>
-                  <h5><%= user.name %> | <%= user.wins || 0 %> wins<i class="material-icons menu-icon">list</i></h5>
+                  <h5><%= user.name %> | <%= user.wins(year) || 0 %> wins<i class="material-icons menu-icon">list</i></h5>
                 <% else %>
                   <h5><%= user.name %> | 2015 Total: <%= Pick.previous_season_total_wins(user.teams, @year) %> <i class="material-icons menu-icon">list</i></h5>
                 <% end %>
@@ -29,7 +32,7 @@
                     </li>
                   <% end %>
                   <li class="collection-item orange darken-2">
-                    Total Wins: <%= user.wins %>
+                    Total Wins: <%= user.wins(@year) %>
                   </li>
                 </ul>
               </div>

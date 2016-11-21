@@ -13,7 +13,7 @@ scrape = NCAABasketball.new
 
 scrape.team_names.each do |team|
   Team.create(name: team, wins: scrape.team_wins(team), year: 2015)
-  Team.create(name: team, wins: 0, year: 2016) # in anticipation of 2016 season
+  Team.create(name: team, year: 2016)
 end
 
 users = User.create([

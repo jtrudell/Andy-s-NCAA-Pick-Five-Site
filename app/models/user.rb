@@ -1,5 +1,3 @@
-require 'ncaa_scrape'
-
 class User < ActiveRecord::Base
   has_many :picks
   has_many :teams, through: :picks

@@ -1,10 +1,5 @@
   <div class="container">
     <div class="headline"></div>
-    <% if @year == 2016 %>
-      <div class="row">
-        <div class="col s8">NOTE: Wins TBD until NCAA updates <a href="http://www.ncaa.com/rankings/basketball-men/d1">its rankings page</a> for 2016/2017 season.</div>
-      </div>
-    <% end %>
     <div class="row">
       <div class="col s6">
         <ul class="collection with-header">
@@ -29,7 +24,7 @@
                       <% if @year == 2015 %>
                         <%= user.teams.index(team) + 1 %>. <%= team.name %> | 2015/2016 Wins: <%= team.wins %>
                       <% else %>
-                        <%= user.teams.index(team) + 1 %>. <%= team.name %> | <%= @year %>/<%= @year + 1 %> Wins: TBD | <%= @year - 1 %>/<%= @year %> Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year - 1).wins %>
+                        <%= user.teams.index(team) + 1 %>. <%= team.name %> | <%= @year %>/<%= @year + 1 %> Wins: <%= @current_year_teams.find_or_create_by(name: team.name, year: @year).wins %> Wins: <%= @previous_year_teams.find_or_create_by(name: team.name, year: @year - 1).wins %>
                       <% end %>
                     </li>
                   <% end %>
@@ -50,11 +45,7 @@
           </li>
           <% @standings.each do |user| %>
             <li class="collection-item">
-              <% if @year == 2015 %>
-                <h5><%= @standings.index(user) + 1 %>. <%= user.name %> (wins: <%= user.wins(@year) %>)</h5>
-              <% else %>
-                <h5><%= @standings.index(user) + 1 %>. <%= user.name %> (wins: TBD)</h5>
-              <% end %>
+              <h5><%= @standings.index(user) + 1 %>. <%= user.name %> (wins: <%= user.wins(@year) %>)</h5>
             </li>
           <% end %>
         </ul>

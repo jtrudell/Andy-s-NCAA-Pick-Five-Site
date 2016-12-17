@@ -12,9 +12,15 @@
             <li>
               <div class="collapsible-header text-justify">
                 <% if @year == 2015 %>
-                  <h5><%= user.name %> | <%= user.wins(@year) || 0 %> wins<i class="material-icons menu-icon">list</i></h5>
+                  <h5>
+                    <%= user.name %> | <%= user.wins(@year) || 0 %> wins
+                    <i class="material-icons menu-icon">list</i>
+                  </h5>
                 <% else %>
-                  <h5><%= user.name %> (2015 total: <%= Pick.previous_season_total_wins(user.teams, @year) %>) <i class="material-icons menu-icon">list</i></h5>
+                  <h5>
+                    <%= display_user(user, @year) %>
+                    <i class='material-icons menu-icon'>list</i>
+                  </h5>
                 <% end %>
               </div>
               <div class="collapsible-body">

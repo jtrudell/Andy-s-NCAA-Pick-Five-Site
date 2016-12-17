@@ -5,13 +5,13 @@ end
 before '/2016' do
   # Team.clear_wins(2016)
   Team.where(year: 2016).update_wins(2016)
-  @users = User.where(year: 2016).order('name')
+  @users = User.users_for(year: 2016)
   @standings = User.standings(2016)
 end
 
 get '/2015' do
   @year = 2015
-  @users = User.where(year: @year).order('name')
+  @users = User.users_for(year: @year)
   @standings = User.standings(@year)
   erb :"index"
 end
@@ -19,7 +19,7 @@ end
 get '/:year' do
   @year = params[:year].to_i
   redirect '/' if Time.now.year < @year
-  @users = User.where(year: @year).order('name')
+  @users = User.users_for(year: @year)
   @standings = User.standings(@year)
   @current_year_teams = Team.where(year: @year)
   @previous_year_teams = Team.where(year: @year - 1)

@@ -18,13 +18,13 @@
               </div>
               <div class="collapsible-body">
                 <ul class="collection">
-                  <%  user.teams.each do |team| %>
+                  <%  user.teams.each_with_index do |team, index| %>
                     <li class="collection-item">
-                      <%= display_team(user, team) %>
+                      <%= display_team(user, team, index) %>
                     </li>
                   <% end %>
                   <li class="collection-item orange darken-2">
-                    Total Wins: <%= user.wins(@year) %>
+                    Total Wins: <%= wins(user) %>
                   </li>
                 </ul>
               </div>
@@ -37,9 +37,9 @@
           <li class="collection-header center orange darken-2">
             <h4>Standings</h4>
           </li>
-          <% @standings.each do |user| %>
+          <% @standings.each_with_index do |user, index| %>
             <li class="collection-item">
-              <h5><%= display_standings(user) %></h5>
+              <h5><%= display_standings(user, index) %></h5>
             </li>
           <% end %>
         </ul>

@@ -20,7 +20,6 @@ class Team < ActiveRecord::Base
   end
 
   private
-
   def zero_wins
     self.wins = 0 if self.wins.nil?
   end

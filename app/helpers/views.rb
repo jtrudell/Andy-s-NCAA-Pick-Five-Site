@@ -1,4 +1,5 @@
 helpers do
+  # 2015 was first year; no 'previous_season/_year" for 2015
   def display_user(user)
     if @year == 2015
       "#{user.name} | #{user.wins(@year) || 0} wins"

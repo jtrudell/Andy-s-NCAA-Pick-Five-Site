@@ -24,7 +24,7 @@ get '/picks/:year' do
   erb :"signup"
 end
 
-# TODO: refactor this next year; move logic to model
+# TODO: refactor this next year; move logic to model, add helpers to view
 post '/picks/:year' do
   year = params[:year].to_i
   @user = User.new(name: params['name'].titleize, year: year)

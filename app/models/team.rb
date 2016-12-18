@@ -8,6 +8,7 @@ class Team < ActiveRecord::Base
   validates :wins, presence: true
   validates_uniqueness_of :name, scope: :year
   before_create :zero_wins
+  scope :teams_for, -> (year:) { where(year: year).order('name') }
 
   def self.update_wins(year)
     scrape = NCAABasketball.new

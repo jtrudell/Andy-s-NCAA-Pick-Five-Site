@@ -11,7 +11,35 @@ $(document).ready(function() {
   $('select').material_select();
 });
 
-// title
+// Completely unecessary React use for fun
+var Headline = React.createClass({
+  displayName: 'Headline',
+
+  render: function render() {
+    var year = this.props.startYear;
+    var endYear = year + 1;
+
+    return React.createElement(
+      'div',
+      {className: 'headline center'},
+      React.DOM.h2(null, 'Andy\'s NCAA Pick Five Challenge'),
+      React.createElement(Andy, null),
+      React.DOM.h3(null, year + '/' + endYear)
+    );
+  }
+});
+
+var Andy = React.createClass({
+  displayName: 'Andy',
+
+  render: function render() {
+    return React.createElement(
+      'img',
+      {className: 'andy circle responsive-image z-depth-3', src: '/andy.jpeg'}
+    );
+  }
+});
+
 var yearParam = window.location.pathname.split('/').pop();
 var startYear = function() {
   if (yearParam.length !== 4) {
@@ -20,29 +48,8 @@ var startYear = function() {
   return parseInt(yearParam)
 }
 
-var Headline = React.createClass({
-  displayName: 'Headline',
-
-  render: function render() {
-    var endYear = startYear() + 1;
-
-    return React.createElement(
-      'div',
-      {className: 'headline center'},
-      React.DOM.h1(null, 'NCAA Pick Five Challenge'),
-      React.DOM.h2(null, startYear() + '/' + endYear )
-    );
-  }
-});
-
-// this is completely unecessary and for experimentation
-Headline.defaultProps = {
-  startYear: startYear()
-};
-
 ReactDOM.render(
-  React.createElement(Headline, null),
+  React.createElement(Headline, {startYear: startYear()}),
   document.querySelector('.headline')
 );
-
 

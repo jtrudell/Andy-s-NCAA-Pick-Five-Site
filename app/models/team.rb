@@ -15,10 +15,6 @@ class Team < ActiveRecord::Base
     Team.where(year: year).map { |team| team.update(wins: scrape.team_wins(team.name)) }
   end
 
-  def self.clear_wins(year)
-    Team.where(year: year).map { |team| team.update(wins: 0) }
-  end
-
   private
   def zero_wins
     self.wins = 0 if self.wins.nil?

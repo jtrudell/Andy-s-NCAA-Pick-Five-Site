@@ -3,7 +3,7 @@
 require 'pry'
 
 def current_year
-  @current_year if defined?(@current_year)
+  return @current_year if defined?(@current_year)
   today = Time.now
   year_end = Time.new(2017, 12, 31)
   season_end = Time.new(2018, 4, 30)
@@ -14,13 +14,10 @@ def current_year
                   end
 end
 
-def last_year
-  @last_year ||= current_year - 1
-end
-
-before "/#{current_year}" do
-  @teams ||= Team.where(year: current_year)
-  @teams.update_wins(current_year) if Time.now > Time.new(2017, 11, 10)
+before '/:year' do
+  year = params[:year].to_i
+  @teams ||= Team.where(year: year)
+  @teams.update_wins(year) if Time.now > Time.new(2017, 11, 10)
 end
 
 get '/' do
@@ -29,25 +26,24 @@ end
 
 get '/:year' do
   @year = params[:year].to_i
-  @users = User.users_for(year: @year)
-  @standings = User.standings(@year)
-  @current_year_teams = Team.teams_for(year: current_year)
-  @previous_year_teams = Team.teams_for(year: last_year)
+  @users ||= User.users_for(year: @year)
+  @standings ||= User.standings(@year)
+  @current_year_teams ||= Team.teams_for(year: current_year)
+  @previous_year_teams ||= Team.teams_for(year: current_year - 1)
   erb :index
 end
 
 get '/picks/:year' do
-  # redirect '/' # no picks for you until next year!
   year = params[:year].to_i
-  @teams = Team.teams_for(year: year)
-  @previous_year_teams = Team.teams_for(year: last_year)
+  redirect '/' if year > current_year
+  @teams ||= Team.teams_for(year: year)
+  @previous_year_teams ||= Team.teams_for(year: year - 1)
   erb :signup
 end
 
-# TODO: refactor this next year; move logic to model, add helpers to view
 post '/picks/:year' do
   year = params[:year].to_i
-  @user = User.new(name: params['name'].titleize, year: year)
+  @user ||= User.new(name: params['name'].titleize, year: year)
   teams = [
     params['pickone'],
     params['picktwo'],
@@ -55,19 +51,17 @@ post '/picks/:year' do
     params['pickfour'],
     params['pickfive']
   ]
-  teams.reject! { |team| team == '' }
+  teams.reject!(&:empty?)
+  @picks ||= Pick.generate(@user, teams, year)
+
   if teams.count != 5
     flash[:notice] = "You selected #{teams.count} teams. You must pick 5 teams."
-    redirect "/picks/#{year}"
-  end
-  @picks = Pick.generate(@user, teams, year)
-  if @user.errors[:base].any?
+  elsif @user.errors[:base].any?
     flash[:notice] = @user.errors[:base].first
-    redirect "/picks/#{year}"
-  end
-  unless @user.save
+  elsif !@user.save
     flash[:notice] = 'Username is taken.'
-    redirect "/picks/#{year}"
+  else
+    redirect "/#{year}"
   end
-  redirect "/#{year}"
+  redirect "/picks/#{year}"
 end

@@ -1,9 +1,15 @@
+# frozen_string_literal: true
+
 helpers do
-  def wins(user, year = @year)
-    "#{user.wins(year)}"
+  def wins(user, year = current_year)
+    user.wins(year).to_s
   end
 
-  def last_year(year = @year)
+  def current_year
+    Time.now.year
+  end
+
+  def last_year(year = current_year)
     year - 1
   end
 
@@ -16,7 +22,7 @@ helpers do
     end
   end
 
-  def display_team(user, team, index)
+  def display_team(_user, team, index)
     if @year == 2015
       "#{index + 1}. #{team.name} | 2015/2016 Wins: #{team.wins}"
     else

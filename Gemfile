@@ -20,6 +20,7 @@ gem 'shotgun'
 
 gem 'ncaa_scrape', '0.2.1'
 gem 'nokogiri'
+gem 'pry'
 
 group :test do
   gem 'shoulda-matchers'

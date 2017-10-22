@@ -4,9 +4,11 @@ require 'ncaa_scrape'
 
 scrape = NCAABasketball.new
 
-# populate/update team wins for previous season; create teams for current seaason
-
-scrape.team_names.each do |team_name|
-  Team.where(name: team_name, year: Time.now.year - 1).first_or_create(name: team_name, wins: 0, year: Time.now.year - 1)
-  Team.create(name: team_name, wins: 0, year: Time.now.year)
+scrape.team_names.each do |team|
+  today = Time.now
+  season_start = Time.new(2017, 11, 1)
+  if today < season_start
+    Team.create(name: team, wins: scrape.team_wins(team), year: Time.now.year - 1)
+  end
+  Team.create(name: team, wins: 0, year: Time.now.year)
 end

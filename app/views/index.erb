@@ -26,6 +26,9 @@
                       <%= display_team(user, team, index) %>
                     </li>
                   <% end %>
+                    <li class="collection-item">
+                      Tiebreaker: <%= user.tie_breaker %>
+                    </li>
                   <li class="collection-item orange darken-2">
                     Total Wins: <%= wins(user) %>
                   </li>

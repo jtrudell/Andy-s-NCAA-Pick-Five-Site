@@ -2,7 +2,7 @@
   <div class="headline"></div>
   <div class="row">
     <% if flash[:notice] %>
-      <h3 class="error"><%= flash[:notice] %></h3>
+      <h4 class="error red accent-4"><%= flash[:notice] %></h4>
     <% end %>
     <div class="col s12">
       <ul class="collection with-header">
@@ -14,7 +14,7 @@
         <h5>Select five teams below, one from each dropdown. Your picks cannot be identical to the picks of anyone who has already signed up.</h5>
       </div>
       <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col l4 m6 s12">
           <select name="pickone" form="signupform">
             <option value='' class="disabled"></option>
             <% @teams.each do |team| %>
@@ -23,7 +23,7 @@
           </select>
           <label>Pick One</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col l4 m6 s12">
           <select name="picktwo" form="signupform">
             <option value='' class="disabled"></option>
             <% @teams.each do |team| %>
@@ -32,7 +32,7 @@
           </select>
           <label>Pick Two</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col l4 m6 s12">
           <select name="pickthree" form="signupform">
             <option value='' class="disabled"></option>
             <% @teams.each do |team| %>
@@ -41,7 +41,7 @@
           </select>
           <label>Pick Three</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col l4 m6 s12">
           <select name="pickfour" form="signupform">
             <option value='' class="disabled"></option>
             <% @teams.each do |team| %>
@@ -50,7 +50,7 @@
           </select>
           <label>Pick Four</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col l4 m6 s12">
           <select name="pickfive" form="signupform">
             <option value='' class="disabled"></option>
             <% @teams.each do |team| %>
@@ -63,7 +63,7 @@
       <div class="row">
         <form class="col s12" action="/picks/2017" id="signupform" method="POST">
           <div class="row">
-            <div class="input-field col s5">
+            <div class="input-field col l5 m6 s12">
               <input placeholder="your first name and first letter of last name" id="name" type="text" class="validate" name="name">
               <label for="name">First Name and Initial:</label>
             </div>

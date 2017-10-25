@@ -27,4 +27,11 @@ helpers do
   def display_standings(user, index)
     "#{index + 1}. #{user.name} (wins: #{wins(user)})"
   end
+
+  def signup_link
+    year = Time.now.year
+    if Time.now < Time.new(year, 11, 10)
+      "<a class='signup_link' href='/picks/" + year.to_s + "'>Click here to make your #{year} picks!</a>"
+    end
+  end
 end

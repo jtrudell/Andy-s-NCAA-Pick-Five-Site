@@ -43,7 +43,8 @@ end
 
 post '/picks/:year' do
   year = params[:year].to_i
-  @user ||= User.new(name: params['name'].titleize, year: year)
+  tie_breaker = params[:tie_breaker].to_i
+  @user ||= User.new(name: params['name'].titleize, tie_breaker: tie_breaker, year: year)
   teams = [
     params['pickone'],
     params['picktwo'],

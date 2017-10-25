@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :teams, through: :picks
   validates :year, presence: true
   validates :name, presence: true
+  validates :tie_breaker, presence: true
   validates_uniqueness_of :name, scope: :year, message: 'That name has already been taken.'
   scope :users_for, ->(year:) { where(year: year).order('name') }
 

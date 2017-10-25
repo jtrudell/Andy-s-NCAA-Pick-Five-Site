@@ -41,6 +41,10 @@ input.select-dropdown {
   text-decoration: underline;
 }
 
+#signupform {
+  padding-top: 25px;
+}
+
 .error {
   color: red;
 }

@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   validates :year, presence: true
   validates :name, presence: true
   validates_uniqueness_of :name, scope: :year, message: 'That name has already been taken.'
-  scope :users_for, -> (year:) { where(year: year).order('name') }
+  scope :users_for, ->(year:) { where(year: year).order('name') }
 
   def wins(year)
-    self.teams.where(year: year).inject(0) { |total, team| total + team.wins }
+    teams.where(year: year).inject(0) { |total, team| total + team.wins }
   end
 
   def self.standings(year)

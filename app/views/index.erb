@@ -27,7 +27,7 @@
                     </li>
                   <% end %>
                     <li class="collection-item">
-                      Tiebreaker: <%= user.tie_breaker %>
+                      Tiebreaker: <%= user&.tie_breaker || 0 %>
                     </li>
                   <li class="collection-item orange darken-2">
                     Total Wins: <%= wins(user) %>

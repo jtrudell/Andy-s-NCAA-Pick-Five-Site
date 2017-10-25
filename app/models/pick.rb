@@ -4,8 +4,8 @@ class Pick < ActiveRecord::Base
   validates_uniqueness_of :team_id, scope: :user
 
   IDENTICAL_PICKS_MESSAGE =
-    'Someone else already picked those five teams.
-     Please try again, picking at least one different team.'.freeze
+    'These exact five teams have been chosen.
+     You must have at least one different team. Pick again!'.freeze
 
   TOTAL_WINS_MESSAGE =
     'Total wins last season for the teams you selected exceeds 115.

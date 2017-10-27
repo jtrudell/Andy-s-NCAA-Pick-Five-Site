@@ -41,6 +41,7 @@ GEM
     multi_json (1.12.2)
     mustermann (1.0.1)
     ncaa_scrape (0.2.1)
+    newrelic_rpm (4.5.0.337)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     pg (0.21.0)
@@ -102,6 +103,7 @@ DEPENDENCIES
   factory_girl
   faker
   ncaa_scrape (= 0.2.1)
+  newrelic_rpm
   nokogiri
   pg
   pry

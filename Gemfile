@@ -21,6 +21,7 @@ gem 'shotgun'
 gem 'ncaa_scrape', '0.2.1'
 gem 'nokogiri'
 gem 'pry'
+gem 'newrelic_rpm'
 
 group :test do
   gem 'shoulda-matchers'

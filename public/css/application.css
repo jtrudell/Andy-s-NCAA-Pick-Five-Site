@@ -1,8 +1,6 @@
-html {
-	background-color: #F57C00;
-}
 body {
 	color: #424242;
+	background-color: #FA8320;
 }
 
 label {
@@ -14,13 +12,25 @@ input.select-dropdown {
   color: #2bbbad;
 }
 
+.btn {
+  background-color: #07bcd2;
+}
+
 .container {
 	width: 85%;
 	margin-top: 5%;
 	margin-bottom: 5%;
 	padding: 5px 40px;
 	border: 2px solid #e0e0e0;
-	background-color: #ffffff;
+	background-color: #eaebec;
+}
+
+.collapsible {
+  background-color: #fff;
+}
+
+.collection-header {
+	background-color: #FA8320 !important;
 }
 
 .menu-icon {

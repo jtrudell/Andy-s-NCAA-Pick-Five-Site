@@ -10,44 +10,44 @@
             <h4>Teams</h4>
           </li>
         </ul>
-        <% @users.each do |user| %>
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div class="collapsible-header text-justify">
-                <h5>
-                  <%= display_user(user) %>
-                  <i class='material-icons menu-icon'>list</i>
-                </h5>
-              </div>
-              <div class="collapsible-body">
-                <ul class="collection">
-                  <%  user.teams.each_with_index do |team, index| %>
-                    <li class="collection-item">
-                      <%= display_team(user, team, index) %>
-                    </li>
-                  <% end %>
-                    <li class="collection-item">
-                      Tiebreaker: <%= user&.tie_breaker || 0 %>
-                    </li>
-                  <li class="collection-item orange darken-2">
-                    Total Wins: <%= wins(user) %>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        <% end %>
+        <%# <% @users.each do |user| %>
+        <%#   <ul class="collapsible" data-collapsible="accordion">
+        <%#     <li>
+        <%#       <div class="collapsible-header text-justify">
+        <%#         <h5>
+        <%#           <%= display_user(user) %>
+        <%#           <i class='material-icons menu-icon'>list</i>
+        <%#         </h5>
+        <%#       </div>
+        <%#       <div class="collapsible-body">
+        <%#         <ul class="collection">
+        <%#           <%  user.teams.each_with_index do |team, index| %>
+        <%#             <li class="collection-item">
+        <%#               <%= display_team(user, team, index) %>
+        <%#             </li>
+        <%#           <% end %>
+        <%#             <li class="collection-item">
+        <%#               Tiebreaker: <%= user&.tie_breaker || 0 %>
+        <%#             </li>
+        <%#           <li class="collection-item orange darken-2">
+        <%#             Total Wins: <%= wins(user) %>
+        <%#           </li>
+        <%#         </ul>
+        <%#       </div>
+        <%#     </li>
+        <%#   </ul>
+        <%# <% end %>
       </div>
       <div class="col l6 m12">
         <ul class="collection with-header z-depth-1">
           <li class="collection-header center">
             <h4>Standings</h4>
           </li>
-          <% @standings.each_with_index do |user, index| %>
-            <li class="collection-item">
-              <h5><%= display_standings(user, index) %></h5>
-            </li>
-          <% end %>
+          <%# <% @standings.each_with_index do |user, index| %>
+          <%#   <li class="collection-item">
+          <%#     <h5><%= display_standings(user, index) %></h5>
+          <%#   </li>
+          <%# <% end %>
         </ul>
       </div>
     </div>

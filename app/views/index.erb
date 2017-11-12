@@ -15,24 +15,24 @@
             <li>
               <div class="collapsible-header text-justify">
                 <h5>
-                  <!-- <%= display_user(user) %> -->
-                  <%= user.name %>
+                  <%= display_user(user) %>
                   <i class='material-icons menu-icon'>list</i>
                 </h5>
               </div>
               <div class="collapsible-body">
                 <ul class="collection">
-                  <li class="collection-item">Will be visible once everyone has made picks</li>
-                  <%# <%  user.teams.each_with_index do |team, index| %>
-                  <%#   <li class="collection-item">
-                  <%#     <%= display_team(user, team, index) %>
-                  <%#   </li>
-                  <%# <% end %>
+                  <%  user.teams.each_with_index do |team, index| %>
                     <li class="collection-item">
-                      <%# Tiebreaker: <%= user&.tie_breaker || 0 %>
+                      <%# <%= display_team(user, team, index) %>
+                      <%= team.name %>
+                    </li>
+                  <% end %>
+                    <li class="collection-item">
+                      Tiebreaker: <%= user&.tie_breaker || 0 %>
                     </li>
                   <li class="collection-item orange darken-2">
-                    Total Wins: <%= wins(user) %>
+                    <%# Total Wins: <%= wins(user) %>
+                    Total Wins: 0
                   </li>
                 </ul>
               </div>

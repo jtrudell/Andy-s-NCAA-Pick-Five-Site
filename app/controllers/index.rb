@@ -17,7 +17,7 @@ end
 before '/:year' do
   year = params[:year].to_i
   @teams ||= Team.where(year: year)
-  @teams.update_wins(year) if Time.now > Time.new(2017, 11, 10)
+  # @teams.update_wins(year) if Time.now > Time.new(2017, 11, 10)
 end
 
 get '/' do

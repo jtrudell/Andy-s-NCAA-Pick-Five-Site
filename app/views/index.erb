@@ -23,16 +23,14 @@
                 <ul class="collection">
                   <%  user.teams.each_with_index do |team, index| %>
                     <li class="collection-item">
-                      <%# <%= display_team(user, team, index) %>
-                      <%= team.name %>
+                      <%= display_team(user, team, index) %>
                     </li>
                   <% end %>
                     <li class="collection-item">
                       Tiebreaker: <%= user&.tie_breaker || 0 %>
                     </li>
                   <li class="collection-item orange darken-2">
-                    <%# Total Wins: <%= wins(user) %>
-                    Total Wins: 0
+                    Total Wins: <%= wins(user) %>
                   </li>
                 </ul>
               </div>
@@ -45,11 +43,11 @@
           <li class="collection-header center">
             <h4>Standings</h4>
           </li>
-          <%# <% @standings.each_with_index do |user, index| %>
-          <%#   <li class="collection-item">
-          <%#     <h5><%= display_standings(user, index) %></h5>
-          <%#   </li>
-          <%# <% end %>
+          <% @standings.each_with_index do |user, index| %>
+            <li class="collection-item">
+              <h5><%= display_standings(user, index) %></h5>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>

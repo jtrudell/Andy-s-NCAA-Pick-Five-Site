@@ -14,6 +14,9 @@ class Team < ActiveRecord::Base
     scrape = NCAABasketball.new
     Team.where(year: year).map do |team|
       updated_wins = scrape.team_wins(team.name)
+      # NCAA site has random trailing whitespace on team names.
+      # This is a lousy fix for that.
+      updated_wins = scrape.team_wins(team.name + " ") if updated_wins.zero?
       team.update(wins: updated_wins) if updated_wins.present?
     end
   end

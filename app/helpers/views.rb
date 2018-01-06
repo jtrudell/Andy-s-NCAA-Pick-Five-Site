@@ -29,9 +29,10 @@ helpers do
   end
 
   def signup_link
-    year = Time.now.year
-    if Time.now < Time.new(year, 11, 10)
-      "<a class='signup_link' href='/picks/" + year.to_s + "'>Click here to make your #{year} picks!</a>"
-    end
+    # TODO: Fix logic
+    # year = Time.now.year
+    # if Time.now < Time.new(year, 11, 10)
+    #   "<a class='signup_link' href='/picks/" + year.to_s + "'>Click here to make your #{year} picks!</a>"
+    # end
   end
 end

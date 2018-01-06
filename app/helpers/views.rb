@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 helpers do
-  def wins(user, year = Time.now.year)
+  def wins(user, year = current_year)
     user.wins(year).to_s
   end
 
@@ -10,7 +10,9 @@ helpers do
     if @year == 2015
       "#{user.name} | #{wins(user) || 0} wins"
     else
-      "#{user.name} (#{current_year - 1} total: #{Pick.previous_season_total_wins(user.teams, @year)})"
+      # TODO: Fix dates so they work
+      "#{user.name}"
+      # "#{user.name} (#{current_year - 1} total: #{Pick.previous_season_total_wins(user.teams, @year)})"
     end
   end
 

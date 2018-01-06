@@ -20,14 +20,10 @@ helpers do
     if @year == 2015
       "#{index + 1}. #{team.name} | 2015/2016 Wins: #{team.wins}"
     else
-       "#{index + 1}. #{team.name} | Wins: #{@current_year_teams.find_or_create_by(name: team.name, year: @year).wins}"
-     end
-    # TODO FIX
-    # else
-    #   "#{index + 1}. #{team.name} | Wins:\
-    #     #{@current_year_teams.find_or_create_by(name: team.name, year: @year).wins}\
-    #     (Last Year: #{@previous_year_teams.find_or_create_by(name: team.name, year: current_year - 1).wins})"
-    # end
+      "#{index + 1}. #{team.name} | Wins:\
+        #{@current_year_teams.find_or_create_by(name: team.name, year: @year).wins}\
+        (Last Year: #{@previous_year_teams.find_or_create_by(name: team.name, year: @year - 1).wins})"
+    end
   end
 
   def display_standings(user, index)

@@ -22,7 +22,7 @@ helpers do
     else
       "#{index + 1}. #{team.name} | Wins:\
         #{@current_year_teams.find_or_create_by(name: team.name, year: @year).wins}\
-        (Last Year: #{@previous_year_teams.find_or_create_by(name: team.name, year: @year - 1).wins})"
+        (Last Year: #{@previous_year_teams.find_or_create_by(name: team.name, year: 2016).wins})"
     end
   end
 
